@@ -3,6 +3,7 @@ package com.example.mobilelele.model.entity;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @MappedSuperclass
 public abstract class BaseEntity {
@@ -11,8 +12,8 @@ public abstract class BaseEntity {
     private Long id;
     @Column(nullable = false)
 
-    private Instant created;
-    private Instant modified;
+    private LocalDateTime created;
+    private LocalDateTime modified;
 
     public Long getId() {
         return id;
@@ -22,24 +23,27 @@ public abstract class BaseEntity {
         this.id = id;
     }
 
-    public Instant getCreated() {
+
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(Instant created) {
+    public BaseEntity setCreated(LocalDateTime created) {
         this.created = created;
+        return this;
     }
 
-    public Instant getModified() {
+    public LocalDateTime getModified() {
         return modified;
     }
 
-    public void setModified(Instant modified) {
+    public BaseEntity setModified(LocalDateTime modified) {
         this.modified = modified;
+        return this;
     }
 
     @PrePersist
     public void beforeCreate(){
-        this.created=Instant.now();
+        this.created=LocalDateTime.now();
     }
 }

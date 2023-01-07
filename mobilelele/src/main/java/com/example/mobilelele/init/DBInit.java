@@ -1,10 +1,13 @@
 package com.example.mobilelele.init;
 
-import com.example.mobilelele.model.CategoryEnum;
+import com.example.mobilelele.model.entity.UserEntity;
+import com.example.mobilelele.model.enums.CategoryEnum;
 import com.example.mobilelele.model.entity.BrandEntity;
 import com.example.mobilelele.model.entity.ModelEntity;
 import com.example.mobilelele.repository.BrandRepository;
+import com.example.mobilelele.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,13 +15,41 @@ import java.util.List;
 @Component
 public class DBInit implements CommandLineRunner {
     private final BrandRepository brandRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public DBInit(BrandRepository brandRepository) {
+
+    public DBInit(BrandRepository brandRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.brandRepository = brandRepository;
+
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        initializeBrandAndModels();
+        initializeUsers();
+
+
+
+    }
+
+    private void initializeUsers() {
+        if(userRepository.count()==0){
+            UserEntity admin=new UserEntity();
+            admin.setUsername("admin")
+                    .setFirstName("Admin")
+                    .setLastName("Adminov")
+                    .setPassword(passwordEncoder.encode("test"))
+                    .setActive(true);
+            userRepository.save(admin);
+        }
+    }
+
+    private void initializeBrandAndModels(){
+
         if(brandRepository.count()==0){
 
             BrandEntity ford=new BrandEntity();
@@ -40,9 +71,6 @@ public class DBInit implements CommandLineRunner {
             ford.setModels(List.of(fiesta,escort));
 
             brandRepository.save(ford);
-        }
-
-
-
+    }
     }
 }
