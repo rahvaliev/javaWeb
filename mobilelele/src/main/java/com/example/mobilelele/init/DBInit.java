@@ -30,23 +30,26 @@ public class DBInit implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         initializeBrandAndModels();
-        initializeUsers();
+        initializeUser();
+
 
 
 
     }
 
-    private void initializeUsers() {
-        if(userRepository.count()==0){
-            UserEntity admin=new UserEntity();
-            admin.setUsername("admin")
-                    .setFirstName("Admin")
-                    .setLastName("Adminov")
-                    .setPassword(passwordEncoder.encode("test"))
-                    .setActive(true);
-            userRepository.save(admin);
-        }
+    private void initializeUser() {
+            if(userRepository.count()==0){
+                UserEntity admin=new UserEntity();
+                admin.setUsername("admin")
+                        .setFirstName("Admin")
+                        .setLastName("Adminov")
+                        .setPassword(passwordEncoder.encode("test"))
+                        .setActive(true);
+                userRepository.save(admin);
+            }
+
     }
+
 
     private void initializeBrandAndModels(){
 

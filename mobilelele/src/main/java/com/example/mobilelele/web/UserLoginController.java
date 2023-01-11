@@ -36,6 +36,10 @@ public class UserLoginController {
                 userLoginBindingModel.getUsername(),
                loginSuccessfully);
 
+        if(loginSuccessfully){
+            return "redirect:/";
+        }
+
         return "redirect:/users/login";
     }
 }
