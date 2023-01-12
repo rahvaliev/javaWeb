@@ -2,6 +2,7 @@ package com.example.mobilelele.model.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,8 +15,8 @@ public class UserEntity extends BaseEntity{
     private String lastName;
     private boolean isActive;
     private String imageUrl;
-    @ManyToMany
-    private List< UserRoleEntity> roles;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List< UserRoleEntity> roles=new ArrayList<>();
 
     public String getUsername() {
         return username;
