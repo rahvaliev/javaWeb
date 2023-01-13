@@ -37,7 +37,7 @@
             <div class="form-group col-md-6 mb-3">
                 <label for="lastName" class="text-white font-weight-bold">Last Name</label>
                 <input id="lastName"
-                       name="lastName"
+                       th:field="*{lastName}"
                        type="text" min="2" max="20" class="form-control"
                        placeholder="First name"/>
                 <p class="errors alert alert-danger">

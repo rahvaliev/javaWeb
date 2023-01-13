@@ -51,7 +51,9 @@ public class UserRegistrationController {
             userServiceIfc.registerAndLoginUser(serviceModel);
             return "redirect:/";
         }else {
-            model.addAttribute("usernameOccupied",true);
+            redirectAttributes.addFlashAttribute("userModel",userModel);
+            redirectAttributes.addFlashAttribute("usernameOccupied",true);
+
             return "redirect:/users/register";
         }
 
