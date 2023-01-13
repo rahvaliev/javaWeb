@@ -11,6 +11,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 
 public class OfferSummaryView {
+    private Long id;
     private String description;
 
     private EngineEnum engine;
@@ -102,6 +103,15 @@ public class OfferSummaryView {
 
     public OfferSummaryView setSeller(String seller) {
         this.seller = seller;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public OfferSummaryView setId(Long id) {
+        this.id = id;
         return this;
     }
 }
