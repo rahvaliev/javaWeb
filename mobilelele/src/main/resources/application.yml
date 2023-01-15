@@ -13,7 +13,7 @@ spring:
       filter:
         enabled: true
 
-#  sql:
+  #  sql:
 #    init:
 #      mode: always
   jpa:

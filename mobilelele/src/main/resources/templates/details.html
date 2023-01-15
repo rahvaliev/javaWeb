@@ -20,36 +20,65 @@
 <div class="container-fluid" th:object="${offerDetails}">
     <h2 class="text-center text-white mt-5">Details</h2>
     <div class="offers row mx-auto d-flex flex-row justify-content-center">
-        <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0" >
+        <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
 
             <div class="card-body pb-1">
-                <h5 class="card-title"   > <sp th:text="*{year} "></sp> <sp th:span="*{model}"></sp> <sp th:text="*{price}"></sp>
-                    </h5>
+                <h5 class="card-title">
+                    <sp th:text="*{year} + ' ' + *{model}"></sp>
+                    <sp th:span="*{model}"></sp>
+                    <sp th:text="*{price}"></sp>
+                </h5>
             </div>
             <ul class="offer-details list-group list-group-flush">
                 <li class="list-group-item">
-                    <div class="card-text"><span >• Mileage </span><spa th:text="*{mileage}"> </spa> <sp> km</sp> </div>
-                    <div class="card-text"><span  >• Price </span><sp th:text=" *{price} "></sp> <sp>BG</sp></div>
-                    <div class="card-text"><span>• Engine type </span> <sp th:text="*{engine}"></sp></div>
-                    <div class="card-text"><span>• Transmission type </span> <sp th:text="*{transmission}"></sp></div>
-                    <div class="card-text"><span>• Offer created </span> <sp th:text="*{created}"></sp></div>
-                    <div class="card-text"><span>• Offer modified </span> <sp th:text="${date}"></sp></div>
-                    <div class="card-text"><span>• Seller - </span> <sp th:text="*{seller}"></sp></div>
+                    <div class="card-text"><span>• Mileage </span>
+                        <spa th:text="*{mileage}"></spa>
+                        <sp> km</sp>
+                    </div>
+                    <div class="card-text"><span>• Price </span>
+                        <sp th:text=" *{price} "></sp>
+                        <sp>BG</sp>
+                    </div>
+                    <div class="card-text"><span>• Engine type </span>
+                        <sp th:text="*{engine}"></sp>
+                    </div>
+                    <div class="card-text"><span>• Transmission type </span>
+                        <sp th:text="*{transmission}"></sp>
+                    </div>
+                    <div class="card-text"><span>• Offer created </span>
+                        <sp th:text="*{created}"></sp>
+                    </div>
+                    <div class="card-text"><span>• Offer modified </span>
+                        <sp th:text="${date}"></sp>
+                    </div>
+                    <div class="card-text"><span>• Seller - </span>
+                        <sp th:text="*{seller}"></sp>
+                    </div>
+                    <div class="card-text"><span>• Description  - </span>
+                        <sp th:text="*{description}"></sp>
+                    </div>
                 </li>
             </ul>
             <div class="card-body">
-                <a class="card-link" href="/">Update</a>
-                <a class="card-link" href="/">Delete</a>
+                <div class="row" >
+<!--                    <th th:if="*{year} == 2022 ">-->
+                    <a c lass="card-link" th:href="@{/offer/{id}/edit(id=*{id})}">Update</a>
+
+                    <form th:action="@{/offer/{id}(id=*{id})}" th:method="delete">
+                        <input type="submit" class="btn btn-primary" value="Delete">
+                    </form>
+<!--                    </th>-->
+                </div>
             </div>
         </div>
         <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
-            <img th:src="*{imageUrl}" class="card-img-top"  alt="Car image">
+            <img th:src="*{imageUrl}" class="card-img-top" alt="Car image">
         </div>
     </div>
 </div>
 
 <div>
-             <footer> </footer>
+    <footer></footer>
 </div>
 
 </body>
