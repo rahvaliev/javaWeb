@@ -1,6 +1,7 @@
 package com.example.mobilelele.model.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.SelectBeforeUpdate;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -45,5 +46,10 @@ public abstract class BaseEntity {
     @PrePersist
     public void beforeCreate(){
         this.created=LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void beforeUpdate() {
+        this.modified=LocalDateTime.now();
     }
 }

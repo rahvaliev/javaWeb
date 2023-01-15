@@ -5,6 +5,7 @@ import com.example.mobilelele.model.entity.OfferEntity;
 import com.example.mobilelele.model.entity.UserEntity;
 import com.example.mobilelele.model.enums.EngineEnum;
 import com.example.mobilelele.model.enums.TransmissionEnum;
+import com.example.mobilelele.model.view.OfferDetailsView;
 import com.example.mobilelele.model.view.OfferSummaryView;
 import com.example.mobilelele.repository.ModelRepository;
 import com.example.mobilelele.repository.OfferRepository;
@@ -13,6 +14,7 @@ import com.example.mobilelele.service.OfferServiceIfc;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,6 +55,17 @@ public class OfferServiceIfcImpl implements OfferServiceIfc {
     public List<OfferSummaryView> getOffers() {
 
      return offerRepository.findAll().stream().map(this::map).collect(Collectors.toList());
+    }
+
+    @Override
+    public OfferDetailsView getOfferDetails(Long id) {
+        OfferEntity offerEntity=offerRepository.findById(id).orElse(null);
+        OfferDetailsView detailsView=modelMapper.map(offerEntity,OfferDetailsView.class);
+//        detailsView.setEngine(offerEntity.getEngine());
+//        detailsView.setTransmission(offerEntity.getTransmission());
+        detailsView.setSeller(offerEntity.getSeller().getFirstName()+" "+offerEntity.getSeller().getLastName());
+        detailsView.setModified(LocalDateTime.now());
+        return detailsView;
     }
 
     private OfferSummaryView map(OfferEntity offerEntity) {
