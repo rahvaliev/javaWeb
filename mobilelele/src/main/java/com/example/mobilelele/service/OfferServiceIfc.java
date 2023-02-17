@@ -17,4 +17,5 @@ public interface OfferServiceIfc {
     void updateOffer(OfferUpdateServiceModel offerUpdateServiceModel);
 
 
+    OfferDetailsView findById(Long id);
 }

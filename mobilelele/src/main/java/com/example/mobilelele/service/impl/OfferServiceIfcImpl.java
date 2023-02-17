@@ -96,6 +96,17 @@ public class OfferServiceIfcImpl implements OfferServiceIfc {
 
     }
 
+    @Override
+    public OfferDetailsView findById(Long id) {
+
+        OfferDetailsView detailsView=modelMapper.map(offerRepository.findById(id),OfferDetailsView.class);
+        detailsView.setTransmission(offerRepository.findById(id).get().getTransmission());
+        detailsView.setEngine(offerRepository.findById(id).get().getEngine());
+        detailsView.setSeller(offerRepository.findById(id).get().getSeller().getFirstName());
+        detailsView.setModel(offerRepository.findById(id).get().getModel().getName());
+        return detailsView;
+    }
+
 
     private OfferSummaryView map(OfferEntity offerEntity) {
         OfferSummaryView summaryView=modelMapper.map(offerEntity,OfferSummaryView.class);

@@ -48,7 +48,7 @@
                        type="number" min="0" class="form-control"
                        placeholder="Suggested price"/>
                 <p class="invalid-feedback errors alert alert-danger">
-                    Suggested price is required.
+                    Suggested price is required must be more than 100 BG.
                 </p>
             </div>
         </div>
@@ -56,10 +56,11 @@
             <div class="form-group col-md-6 mb-3">
                 <label class="text-center text-white font-weight-bold" for="engine">Engine</label>
                 <select id="engine"
+                        th:field="*{engine}"
                         class="form-control">
                     <option value="">- Select engine type -</option>
                     <option
-                            th:each="anEngine : ${engines}"
+                            th:each="anEngine : ${T(com.example.mobilelele.model.enums.EngineEnum).values()}"
                             th:value="${anEngine}"
                             th:text="${anEngine}"
                             th:selected="${anEngine} == *{engine}">
@@ -72,10 +73,12 @@
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label class="text-center text-white font-weight-bold" for="transmission">Transmission</label>
-                <select id="transmission" class="form-control">
+                <select id="transmission"
+                        th:field="*{transmission}"
+                        class="form-control">
                     <option value="">- Select transmission type -</option>
                     <option
-                    th:each="aTransmission : ${transmissions}"
+                    th:each="aTransmission : ${T(com.example.mobilelele.model.enums.TransmissionEnum).values()}"
                     th:value="${aTransmission}"
                     th:text="${aTransmission}"
                     th:selected="${aTransmission} == *{transmission}"> Transmission type

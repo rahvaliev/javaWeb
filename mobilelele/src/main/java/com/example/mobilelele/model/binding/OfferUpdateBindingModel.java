@@ -8,22 +8,35 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 
 import java.time.LocalDateTime;
 
 public class OfferUpdateBindingModel {
     private Long id;
+    @NotBlank
     private String description;
+    @NotNull
 
     private EngineEnum engine;
+    @NotBlank
     private String imageUrl;
-    private int mileage;
-    private int price;
+    @PositiveOrZero
+    @NotNull
+    private Integer mileage;
+    @NotNull
+    @Min(100)
+    private Integer price;
+    @NotNull
 
     private TransmissionEnum transmission;
+    @NotNull
+    @Min(1932)
 
-    private int year;
+    private Integer year;
     private String model;
 
     public Long getId() {
@@ -62,20 +75,20 @@ public class OfferUpdateBindingModel {
         return this;
     }
 
-    public int getMileage() {
+    public Integer getMileage() {
         return mileage;
     }
 
-    public OfferUpdateBindingModel setMileage(int mileage) {
+    public OfferUpdateBindingModel setMileage(Integer mileage) {
         this.mileage = mileage;
         return this;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public OfferUpdateBindingModel setPrice(int price) {
+    public OfferUpdateBindingModel setPrice(Integer price) {
         this.price = price;
         return this;
     }
@@ -89,11 +102,11 @@ public class OfferUpdateBindingModel {
         return this;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public OfferUpdateBindingModel setYear(int year) {
+    public OfferUpdateBindingModel setYear(Integer year) {
         this.year = year;
         return this;
     }
