@@ -14,6 +14,15 @@ public class UserEntity extends BaseEntity{
     private String password;
     private Set<UserRoleEntity>roles=new HashSet<>();
 
+    public UserEntity() {
+    }
+
+    public UserEntity addRole(UserRoleEntity role){
+        this.roles.add(role);
+        return this;
+
+    }
+
     public String getFirstName() {
         return firstName;
     }
