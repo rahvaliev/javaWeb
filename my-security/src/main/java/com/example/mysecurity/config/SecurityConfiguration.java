@@ -29,7 +29,7 @@ public class SecurityConfiguration {
                 .formLogin().usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                 .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
                 .loginPage("/users/login")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/",true)
                 .failureForwardUrl("/users/login-errors");
 
         return httpSecurity.build();
