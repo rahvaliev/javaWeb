@@ -14,8 +14,8 @@ public class Qualities extends BaseEntity{
     private Double speed;
     private Integer age;
     private LocalDateTime createdOn;
-    private Athlete athlete;
-    private Coach createdBy;
+    private AthleteEntity athleteEntity;
+    private CoachEntity createdBy;
 
     public Double getHeight() {
         return height;
@@ -62,20 +62,20 @@ public class Qualities extends BaseEntity{
         return this;
     }
     @ManyToOne
-    public Athlete getAthlete() {
-        return athlete;
+    public AthleteEntity getAthlete() {
+        return athleteEntity;
     }
 
-    public Qualities setAthlete(Athlete athlete) {
-        this.athlete = athlete;
+    public Qualities setAthlete(AthleteEntity athleteEntity) {
+        this.athleteEntity = athleteEntity;
         return this;
     }
     @ManyToOne
-    public Coach getCreatedBy() {
+    public CoachEntity getCreatedBy() {
         return createdBy;
     }
 
-    public Qualities setCreatedBy(Coach createdBy) {
+    public Qualities setCreatedBy(CoachEntity createdBy) {
         this.createdBy = createdBy;
         return this;
     }

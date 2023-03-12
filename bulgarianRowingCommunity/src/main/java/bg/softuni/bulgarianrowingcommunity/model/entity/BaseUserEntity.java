@@ -9,7 +9,7 @@ import java.util.Set;
 @Entity
 @Table(name = "baseUsers")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class BaseUserEntity extends BaseEntity {
+public class BaseUserEntity extends BaseEntity {
     private String username;
     private String fullName;
     private String email;
@@ -18,7 +18,7 @@ public abstract class BaseUserEntity extends BaseEntity {
 
     private Set<RoleEntity>roles;
 
-    @OneToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     public Set<RoleEntity> getRoles() {
         return roles;
     }

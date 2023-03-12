@@ -1,23 +1,21 @@
 package bg.softuni.bulgarianrowingcommunity.model.entity;
 
 import bg.softuni.bulgarianrowingcommunity.model.enums.CoachLevelEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "coaches")
-public class Coach extends BaseUserEntity{
+public class CoachEntity extends BaseUserEntity{
     private Double salary;
     private Double rating;
     private CoachLevelEnum coachLevel;
+    private Team team;
 
     public Double getSalary() {
         return salary;
     }
 
-    public Coach setSalary(Double salary) {
+    public CoachEntity setSalary(Double salary) {
         this.salary = salary;
         return this;
     }
@@ -26,7 +24,7 @@ public class Coach extends BaseUserEntity{
         return rating;
     }
 
-    public Coach setRating(Double rating) {
+    public CoachEntity setRating(Double rating) {
         this.rating = rating;
         return this;
     }
@@ -35,8 +33,18 @@ public class Coach extends BaseUserEntity{
         return coachLevel;
     }
 
-    public Coach setCoachLevel(CoachLevelEnum coachLevel) {
+    public CoachEntity setCoachLevel(CoachLevelEnum coachLevel) {
         this.coachLevel = coachLevel;
+        return this;
+    }
+    @ManyToOne
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public CoachEntity setTeam(Team team) {
+        this.team = team;
         return this;
     }
 }

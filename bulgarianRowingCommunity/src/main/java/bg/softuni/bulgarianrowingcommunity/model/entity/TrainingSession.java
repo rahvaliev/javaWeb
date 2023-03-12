@@ -9,8 +9,8 @@ import java.util.Set;
 @Table
 public class TrainingSession extends BaseEntity {
     private Set<TrainingProgram> trainingProgramSet=new HashSet<>();
-    private Athlete athlete;
-    private Coach coach;
+    private AthleteEntity athleteEntity;
+    private CoachEntity coach;
     @ManyToMany
     public Set<TrainingProgram> getTrainingProgramSet() {
         return trainingProgramSet;
@@ -21,20 +21,20 @@ public class TrainingSession extends BaseEntity {
         return this;
     }
     @ManyToOne
-    public Athlete getAthlete() {
-        return athlete;
+    public AthleteEntity getAthlete() {
+        return athleteEntity;
     }
 
-    public TrainingSession setAthlete(Athlete athlete) {
-        this.athlete = athlete;
+    public TrainingSession setAthlete(AthleteEntity athleteEntity) {
+        this.athleteEntity = athleteEntity;
         return this;
     }
     @ManyToOne
-    public Coach getCoach() {
+    public CoachEntity getCoach() {
         return coach;
     }
 
-    public TrainingSession setCoach(Coach coach) {
+    public TrainingSession setCoach(CoachEntity coach) {
         this.coach = coach;
         return this;
     }

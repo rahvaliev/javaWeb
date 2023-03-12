@@ -1,6 +1,7 @@
 package bg.softuni.bulgarianrowingcommunity.model.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -9,17 +10,19 @@ import java.util.Set;
 
 @Entity
 @Table(name = "athletes")
-public class Athlete extends BaseUserEntity{
+public class AthleteEntity extends BaseUserEntity{
     private Set<Qualities> qualities=new HashSet<>();
     private Double rating;
     private String level;
+    private String motto;
+    private Team team;
 
     @OneToMany(mappedBy = "athlete")
     public Set<Qualities> getQualities() {
         return qualities;
     }
 
-    public Athlete setQualities(Set<Qualities> qualities) {
+    public AthleteEntity setQualities(Set<Qualities> qualities) {
         this.qualities = qualities;
         return this;
     }
@@ -28,7 +31,7 @@ public class Athlete extends BaseUserEntity{
         return rating;
     }
 
-    public Athlete setRating(Double rating) {
+    public AthleteEntity setRating(Double rating) {
         this.rating = rating;
         return this;
     }
@@ -37,8 +40,26 @@ public class Athlete extends BaseUserEntity{
         return level;
     }
 
-    public Athlete setLevel(String level) {
+    public AthleteEntity setLevel(String level) {
         this.level = level;
+        return this;
+    }
+
+    public String getMotto() {
+        return motto;
+    }
+
+    public AthleteEntity setMotto(String motto) {
+        this.motto = motto;
+        return this;
+    }
+    @ManyToOne
+    public Team getTeam() {
+        return team;
+    }
+
+    public AthleteEntity setTeam(Team team) {
+        this.team = team;
         return this;
     }
 }

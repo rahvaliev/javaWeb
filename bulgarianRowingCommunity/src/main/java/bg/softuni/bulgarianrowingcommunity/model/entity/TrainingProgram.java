@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 public class TrainingProgram extends BaseEntity{
     private String description;
     private ProgramTypeEnum programType;
-    private Coach createdBy;
+    private CoachEntity createdBy;
 
     public String getDescription() {
         return description;
@@ -30,11 +30,11 @@ public class TrainingProgram extends BaseEntity{
         return this;
     }
     @ManyToOne
-    public Coach getCreatedBy() {
+    public CoachEntity getCreatedBy() {
         return createdBy;
     }
 
-    public TrainingProgram setCreatedBy(Coach createdBy) {
+    public TrainingProgram setCreatedBy(CoachEntity createdBy) {
         this.createdBy = createdBy;
         return this;
     }
