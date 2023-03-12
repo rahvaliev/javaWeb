@@ -4,6 +4,7 @@ import bg.softuni.bulgarianrowingcommunity.model.enums.RoleEnums;
 import jakarta.persistence.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,7 +17,12 @@ public class BaseUserEntity extends BaseEntity {
     private String password;
     private String profilePicUrl;
 
-    private Set<RoleEntity>roles;
+    private Set<RoleEntity> roles=new HashSet<>();
+
+    public BaseUserEntity addRole(RoleEntity role){
+        this.roles.add(role);
+        return this;
+    }
 
     @ManyToMany(fetch = FetchType.EAGER)
     public Set<RoleEntity> getRoles() {
@@ -29,7 +35,7 @@ public class BaseUserEntity extends BaseEntity {
     }
 
 
-
+    @Column(unique = true, nullable = false)
     public String getUsername() {
         return username;
     }
@@ -47,7 +53,7 @@ public class BaseUserEntity extends BaseEntity {
         this.fullName = fullName;
         return this;
     }
-
+    @Column(nullable = false,unique = true)
     public String getEmail() {
         return email;
     }
@@ -56,7 +62,7 @@ public class BaseUserEntity extends BaseEntity {
         this.email = email;
         return this;
     }
-
+    @Column(nullable = false)
     public String getPassword() {
         return password;
     }
