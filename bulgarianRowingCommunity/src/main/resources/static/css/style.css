@@ -1,0 +1,88 @@
+body{
+
+    background-image: url("/images/back2rowing.jpg");
+    /*backdrop-filter: blur(4px);*/
+    max-width: 100%;
+    padding: 5px;
+    background-attachment: fixed;
+    margin: 5px 30px;
+    line-height: 1.4;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+
+}
+
+nav{
+    background-color: #234465;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 15px;
+}
+nav li{
+    display:  inline-block;
+    margin: 5px;
+    padding: 0 15px;
+    font-family: "Helvetica";
+    border-radius: 5px;
+
+}
+nav p {
+    float: left;
+    margin: 15px;
+}
+
+nav li a{
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+}
+nav li a:hover{
+    color: yellowgreen;
+}
+nav li span{
+    padding-bottom: 0px;
+}
+main aside{
+    width: 20%;
+    float: right;
+}
+main aside:hover{
+    border: solid 2px white;
+}
+main section article{
+    width: 20%;
+    text-align: center;
+    color: white;
+    text-decoration: underline solid 2px;
+    padding: 15px;
+}
+/*main section article:nth-child(2){*/
+/*    border: solid 2px;*/
+/*}*/
+main section article p{
+    border: solid 2px;
+}
+main article img{
+    width: 100%;
+
+}
+footer{
+    color: #ffffff;
+    background: transparent;
+    position:fixed;
+    bottom:5px;
+
+}
+footer article{
+    display: inline-block
+}
+footer article a{
+    color: white;
+}
+header{
+    color: white;
+    background: transparent;
+    text-align: center;
+    font-family: SansSerif;
+}
